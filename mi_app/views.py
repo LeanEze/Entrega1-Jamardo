@@ -1,20 +1,23 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from mi_app.models import Cerdo
-from mi_app.models import Perro
-from mi_app.models import Gato
+from mi_app.models import cerdo
+from mi_app.models import perro
+from mi_app.models import gato
+
+
+def mostrar_inicio(request):
+    
+    return render(request, "mi_app/inicio.html", {})#templete
+
 
 def datos_cerdos(request):
-    context = {}
-    context["cerdos"] = Cerdo.objects.all()#modelo
-    return render(request, "mi_app/cerdos.html", context)#templete
+    
+    return render(request, "mi_app/cerdos.html", {})
 
 def datos_perros(request):
-    context = {}
-    context["perros"] = Perro.objects.all()#modelo
-    return render(request, "mi_app/perros.html", context)#templete
+    
+    return render(request, "mi_app/perros.html", {})
 
 def datos_gatos(request):
-    context = {}
-    context["gatos"] = Gato.objects.all()#modelo
-    return render(request, "mi_app/gatos.html", context)#templete
+    
+    return render(request, "mi_app/gatos.html", {})

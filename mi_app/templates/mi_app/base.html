@@ -13,53 +13,23 @@
 
 <body>
 <!--barra navegacion-->
-<!-- Navigation-->
-<nav class="navbar navbar-light bg-light static-top">
-  <div class="container">
-      <a class="navbar-brand" href="#!">Start Bootstrap</a>
-      <a class="btn btn-primary" href="#signup">Sign Up</a>
-  </div>
-</nav>
+<ul class="nav nav-pills">
+  <li role="presentation" class="active"><a href="#">Inicio</a></li>
+  <li role="presentation"><a href="#">Perros</a></li>
+  <li role="presentation"><a href="#">Gatos</a></li>
+  <li role="presentation"><a href="#">Cerdos</a></li>
+</ul>
 
 <!--contenido-->
-
-
-{% block cuerpo %}
-{% endblock %}
-
+{%block Cuerpo%}
+{%endblock%}
 
 <!--pie de pagina-->
-<footer class="footer bg-light">
-  <div class="container">
-      <div class="row">
-          <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
-              <ul class="list-inline mb-2">
-                  <li class="list-inline-item"><a href="#!">About</a></li>
-                  <li class="list-inline-item">⋅</li>
-                  <li class="list-inline-item"><a href="#!">Contact</a></li>
-                  <li class="list-inline-item">⋅</li>
-                  <li class="list-inline-item"><a href="#!">Terms of Use</a></li>
-                  <li class="list-inline-item">⋅</li>
-                  <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
-              </ul>
-              <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2022. All Rights Reserved.</p>
-          </div>
-          <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
-              <ul class="list-inline mb-0">
-                  <li class="list-inline-item me-4">
-                      <a href="#!"><i class="bi-facebook fs-3"></i></a>
-                  </li>
-                  <li class="list-inline-item me-4">
-                      <a href="#!"><i class="bi-twitter fs-3"></i></a>
-                  </li>
-                  <li class="list-inline-item">
-                      <a href="#!"><i class="bi-instagram fs-3"></i></a>
-                  </li>
-              </ul>
-          </div>
-      </div>
+<div class="container-fluid footer navbar-fixed-bottom">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    <a class="text-dark" href="https://Jamardo.com/">Leandro Jamardo</a>
   </div>
-</footer>
+</div>
 
 </body>
 </html>

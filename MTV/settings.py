@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'mi_app.wsgi.application'
+WSGI_APPLICATION = 'MTV.wsgi.application'
 
 
 # Database

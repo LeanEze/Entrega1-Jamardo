@@ -1,3 +1,5 @@
 from django.contrib import admin
+from mi_app.models import perro
 
-# Register your models here.
+
+admin.site.register(perro)
