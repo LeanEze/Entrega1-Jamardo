@@ -22,3 +22,6 @@ class cerdoFormulario(forms.Form):
     genero = forms.CharField(max_length=40)
     raza = forms.CharField(max_length=40)
     edad = forms.IntegerField()
+
+class AnimalBusquedaFormularios(forms.Form):
+    criterio = forms.CharField()

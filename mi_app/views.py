@@ -1,10 +1,10 @@
+import re
 from django.shortcuts import render
 from django.http import HttpResponse
-from mi_app.forms import gatoFormulario, perroFormulario
+from mi_app.forms import cerdoFormulario, gatoFormulario, perroFormulario
 from mi_app.models import cerdo
 from mi_app.models import perro
 from mi_app.models import gato
-
 
 def mostrar_inicio(request):
     
@@ -72,3 +72,40 @@ def gato_formulario(request):
         miFormulario = gatoFormulario()
    
     return render(request, "mi_app/gatos.html", {"miFormulario": miFormulario})
+
+
+def cerdo_formulario(request):
+    
+    if  request.method == "POST":
+        
+        miFormulario = cerdoFormulario(request.POST)
+        
+        print(miFormulario)
+
+        if miFormulario.is_valid:
+           
+            informacion = miFormulario.cleaned_data
+           
+            cerdos = cerdo (nombre=informacion['nombre'], genero=informacion['genero'], 
+            raza=informacion['raza'], edad=informacion['edad'])
+           
+            cerdos.save()
+
+            return render(request, "mi_app/cerdos.html")
+    else:
+        
+        miFormulario = gatoFormulario()
+   
+    return render(request, "mi_app/cerdos.html", {"miFormulario": miFormulario})
+
+
+def busqueda_formularios(request):
+
+    return render(request, "mi_app/busquedaFormularios.html")
+
+    
+def buscar(request):
+
+    respuesta = f"estoy buscando al perro: {request.GET['nombre']}"
+
+    return HttpResponse(respuesta)
