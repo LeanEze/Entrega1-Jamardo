@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from mi_app.forms import gatoFormulario, perroFormulario
 from mi_app.models import cerdo
 from mi_app.models import perro
 from mi_app.models import gato
@@ -14,10 +15,60 @@ def datos_cerdos(request):
     
     return render(request, "mi_app/cerdos.html", {})
 
-def datos_perros(request):
+#def datos_perros(request):
     
-    return render(request, "mi_app/perros.html", {})
+ #   return render(request, "mi_app/perros.html", {})
 
-def datos_gatos(request):
+#def datos_gatos(request):
     
-    return render(request, "mi_app/gatos.html", {})
+ #   return render(request, "mi_app/gatos.html", {})
+
+
+def perro_formulario(request):
+    
+    if  request.method == "POST":
+        
+        miFormulario = perroFormulario(request.POST)
+        
+        print(miFormulario)
+
+        if miFormulario.is_valid:
+           
+            informacion = miFormulario.cleaned_data
+           
+            perros = perro (nombre=informacion['nombre'], genero=informacion['genero'], 
+            raza=informacion['raza'], edad=informacion['edad'])
+           
+            perros.save()
+
+            return render(request, "mi_app/perros.html")
+    else:
+        
+        miFormulario = perroFormulario()
+   
+    return render(request, "mi_app/perros.html", {"miFormulario": miFormulario})
+
+
+def gato_formulario(request):
+    
+    if  request.method == "POST":
+        
+        miFormulario = gatoFormulario(request.POST)
+        
+        print(miFormulario)
+
+        if miFormulario.is_valid:
+           
+            informacion = miFormulario.cleaned_data
+           
+            gatos = gato (nombre=informacion['nombre'], genero=informacion['genero'], 
+            raza=informacion['raza'], edad=informacion['edad'])
+           
+            gatos.save()
+
+            return render(request, "mi_app/gatos.html")
+    else:
+        
+        miFormulario = gatoFormulario()
+   
+    return render(request, "mi_app/gatos.html", {"miFormulario": miFormulario})
