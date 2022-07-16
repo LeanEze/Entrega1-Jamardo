@@ -46,7 +46,7 @@ def perro_formulario(request):
         
         miFormulario = perroFormulario()
    
-    return render(request, "mi_app/perros.html", {"miFormulario": miFormulario})
+    return render(request, "mi_app/perros.html",{"miFormulario": miFormulario})
 
 
 def gato_formulario(request):
@@ -106,6 +106,15 @@ def busqueda_formularios(request):
     
 def buscar(request):
 
-    respuesta = f"estoy buscando al perro: {request.GET['nombre']}"
+    
+    if request.GET['nombre']:
+        nombre = request.GET['nombre']
+        perros = perro.objects.filter(nombre__icontains=nombre)
+        
+        return render(request, "mi_app/busquedaFormularios.html", {})
 
-    return HttpResponse(respuesta)
+    else:
+        respuesta = "no enviaste datos"
+
+    return render (request, "mi_app/resultadosBusqueda.html", {"respuesta": respuesta})
+   

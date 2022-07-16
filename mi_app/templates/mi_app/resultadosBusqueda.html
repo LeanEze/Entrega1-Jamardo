@@ -1,0 +1,24 @@
+{% extends 'mi_app/base.html' %}
+
+{%block Cuerpo%}
+
+<p>Estamos buscando el :{{nombre}}</p>
+
+{% if perros %}
+
+<ul>
+{% for perro in perros %}
+
+    <li> {{perro.perros}} </li>
+    <li> {{perro.nombre}} </li>
+
+{% endfor %}
+</ul>
+
+{% else %}
+
+<p> No hay datos con esa descripcion </p>
+
+{% endif %}
+
+{% endblock %}
