@@ -1,7 +1,7 @@
 import re
 from django.shortcuts import render
 from django.http import HttpResponse
-from mi_app.forms import cerdoFormulario, gatoFormulario, perroFormulario
+from mi_app.forms import AnimalBusquedaFormularios, cerdoFormulario, gatoFormulario, perroFormulario
 from mi_app.models import cerdo
 from mi_app.models import perro
 from mi_app.models import gato
@@ -94,27 +94,27 @@ def cerdo_formulario(request):
             return render(request, "mi_app/cerdos.html")
     else:
         
-        miFormulario = gatoFormulario()
+        miFormulario = cerdoFormulario()
    
     return render(request, "mi_app/cerdos.html", {"miFormulario": miFormulario})
 
 
-def busqueda_formularios(request):
+def buscar_nombre(request):
 
     return render(request, "mi_app/busquedaFormularios.html")
 
     
 def buscar(request):
 
-    
-    if request.GET['nombre']:
-        nombre = request.GET['nombre']
-        perros = perro.objects.filter(nombre__icontains=nombre)
+
+    if request.GET["nombre"]:
         
-        return render(request, "mi_app/busquedaFormularios.html", {})
+        perros = perro.objects.filter(nombre__icontains = perros).all()
+        
+        return render(request, "mi_app/resultadosBusqueda.html", {"perros":perros})
 
     else:
         respuesta = "no enviaste datos"
-
-    return render (request, "mi_app/resultadosBusqueda.html", {"respuesta": respuesta})
+        
+    return render (request, "mi_app/busquedaFormularios.html", {"respuesta": respuesta})
    
