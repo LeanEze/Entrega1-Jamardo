@@ -1,10 +1,9 @@
 import re
 from django.shortcuts import render
 from django.http import HttpResponse
-from mi_app.forms import AnimalBusquedaFormularios, cerdoFormulario, gatoFormulario, perroFormulario
-from mi_app.models import cerdo
-from mi_app.models import perro
-from mi_app.models import gato
+from mi_app.forms import cerdoFormulario, gatoFormulario, perroFormulario
+from mi_app.models import Cerdo, Gato, Perro
+
 
 def mostrar_inicio(request):
     
@@ -15,13 +14,13 @@ def datos_cerdos(request):
     
     return render(request, "mi_app/cerdos.html", {})
 
-#def datos_perros(request):
+def datos_perros(request):
     
- #   return render(request, "mi_app/perros.html", {})
+    return render(request, "mi_app/perros.html", {})
 
-#def datos_gatos(request):
+def datos_gatos(request):
     
- #   return render(request, "mi_app/gatos.html", {})
+    return render(request, "mi_app/gatos.html", {})
 
 
 def perro_formulario(request):
@@ -36,7 +35,7 @@ def perro_formulario(request):
            
             informacion = miFormulario.cleaned_data
            
-            perros = perro (nombre=informacion['nombre'], genero=informacion['genero'], 
+            perros = Perro (nombre=informacion['nombre'], genero=informacion['genero'], 
             raza=informacion['raza'], edad=informacion['edad'])
            
             perros.save()
@@ -61,7 +60,7 @@ def gato_formulario(request):
            
             informacion = miFormulario.cleaned_data
            
-            gatos = gato (nombre=informacion['nombre'], genero=informacion['genero'], 
+            gatos = Gato (nombre=informacion['nombre'], genero=informacion['genero'], 
             raza=informacion['raza'], edad=informacion['edad'])
            
             gatos.save()
@@ -86,7 +85,7 @@ def cerdo_formulario(request):
            
             informacion = miFormulario.cleaned_data
            
-            cerdos = cerdo (nombre=informacion['nombre'], genero=informacion['genero'], 
+            cerdos = Cerdo (nombre=informacion['nombre'], genero=informacion['genero'], 
             raza=informacion['raza'], edad=informacion['edad'])
            
             cerdos.save()
@@ -99,22 +98,24 @@ def cerdo_formulario(request):
     return render(request, "mi_app/cerdos.html", {"miFormulario": miFormulario})
 
 
-def buscar_nombre(request):
+def busqueda_formularios(request):
 
-    return render(request, "mi_app/busquedaFormularios.html")
+    return render(request, "mi_app/buscarFormularios.html")
 
     
 def buscar(request):
 
-
-    if request.GET["nombre"]:
+    
+    if request.GET['nombre']:
+        nombre = request.GET['nombre']
+        perros = Perro.objects.filter(nombre__contains=nombre)
         
-        perros = perro.objects.filter(nombre__icontains = perros).all()
         
-        return render(request, "mi_app/resultadosBusqueda.html", {"perros":perros})
+        return render (request, "mi_app/buscarFormularios.html", {"perros":perros})
 
     else:
         respuesta = "no enviaste datos"
-        
-    return render (request, "mi_app/busquedaFormularios.html", {"respuesta": respuesta})
+          
+
+    return render (request, "mi_app/buscarFormularios.html", {"respuesta": respuesta})
    

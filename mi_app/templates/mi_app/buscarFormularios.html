@@ -1,0 +1,38 @@
+{% extends 'mi_app/base.html' %}
+
+{%block Cuerpo%}
+
+<h1>Buscar Perros por Nombre</h1>
+
+
+<form action="{% url 'buscar' %}" method="GET">
+
+    Nombre: <input type="charset" name="nombre" id="Nombre" required>
+
+    <input type="submit" value="Buscar">
+
+</form>
+<p><h2>Estamos buscando datos del perro </h2></p><br>
+
+{% if perros %}
+
+    <ul>
+        {% for Perro in perros %}
+
+            <li><strong>Nombre: {{ Perro.nombre }}</strong></li>
+    
+            <li><strong>Genero: {{ Perro.genero }}</strong></li>
+   
+            <li><strong>Raza: {{ Perro.raza }}</strong></li>
+   
+            <li><strong>Edad: {{ Perro.edad }} </strong></li>
+
+        {% endfor %}
+    </ul>
+
+{% else %}
+
+<p> No hay datos con esa descripcion </p>
+
+{% endif %}
+{% endblock %}

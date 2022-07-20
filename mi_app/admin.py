@@ -1,11 +1,11 @@
 from django.contrib import admin
-from mi_app.models import perro
-from mi_app.models import cerdo
-from mi_app.models import gato
+from mi_app.models import Perro
+from mi_app.models import Cerdo
+from mi_app.models import Gato
 
 
-admin.site.register(perro)
+admin.site.register(Perro)
 
-admin.site.register(gato)
+admin.site.register(Gato)
 
-admin.site.register(cerdo)
+admin.site.register(Cerdo)
