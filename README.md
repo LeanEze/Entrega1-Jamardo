@@ -12,15 +12,60 @@ Esta aplicacion permite ingresar a un sitio web donde se pueden realizar las sig
 
 Ejecucion del programa
 
-1. Para poder ejecutarlo es necesario abrir una consola.
+- Instalación:
+Para poder instalar el software se necesita:
 
-2. tener instalado python y django.
+1- Chequear la version de python instalada
+Para poder ejecutar el programa sin problemas recomendamos versiones 3.8.0 o superiores.
+    Como chequear tu version de python:
+    Ingresar a la terminal
+    
+    Para ios o linux:
 
-3. En la terminal ejecutar el sevidor con los siguientes comandos:
-    * python manage.py runserver
+    python –version
 
-4. Luego de correr el sevidor proporcionara la ruta de la aplicacion en la terminal. Utilizarla en un navegador web. y seleccionar la ruta "inicio/"
+    Python 3.8.0
 
+    En windows:
+
+    c:\> py –version
+
+    c:\> Python 3.8.0
+
+
+Instalar Dependencias:
+
+Para esto es necesario que ejecutes pip install, asegurarte que estas en la carpeta correspondiente al proyecyo y que puedas ver la carpeta requiremets.txt.
+
+> pip install -r requirements.txt
+
+Esto te va a devolver mucho codigo dentro de la terminal
+
+(Algunos sistemas operativos necesitan que uses pip3 en vez de pip)
+
+Setear la Aplicacion Django:
+
+Una vez que finalizaste la instalación de dependencias necesitas correr algunos comandos de django.
+
+    -Migrations
+
+Inicializar la base de datos (ios o linux):
+
+> python mananage.py migrate
+
+En windows:
+
+c:\> py mananage.py migrate
+
+    Ejecutar el servidor:
+
+> python mananage.py runserver
+
+windows:
+
+c:\> py mananage.py runserver
+
+De esta manera el servidor proporciona la ruta de la aplicacion en la terminal. Copiar la direccion y utilizarla en un navegador web y seleccionar la ruta "inicio/"
 
 
 Utilizacion de finciones del programa
